@@ -158,4 +158,23 @@ public class EmployeeDetailsToDatabase implements IEmployeeDetails{
         }
     }
 
+    @Override
+    public boolean getMinMaxSumAvg(String gender) {
+        String sumQueryFemale = "SELECT SUM(emp_salar) from employee_department_details where emp_id in(Select emp_id from employee_details where  emp_gender = '"+gender+"' group by emp_gender);";
+        String avgQueryFemale = "SELECT AVG(emp_salar) from employee_department_details where emp_id in(Select emp_id from employee_details where  emp_gender = '"+gender+"' group by emp_gender);";
+        String minQueryFemale = "SELECT MIN(emp_salar) from employee_department_details where emp_id in(Select emp_id from employee_details where  emp_gender = '"+gender+"' group by emp_gender);";
+        String maxQueryFemale = "SELECT MAX(emp_salar) from employee_department_details where emp_id in(Select emp_id from employee_details where  emp_gender = '"+gender+"' group by emp_gender);";
+        String countQueryFemale = "SELECT COUNT(emp_salar) from employee_department_details where emp_id in(Select emp_id from employee_details where  emp_gender = '"+gender+"' group by emp_gender);";
+        try {
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(sumQueryFemale);
+            while(resultSet.next()) {
+                System.out.println("Sum is: " + resultSet.getInt("SUM(emp_salar)"));
+            }
+            return true;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }
