@@ -105,9 +105,11 @@ public class EmployeePayrollDriver {
     public static void main(String[] args) {
         System.out.println("Welcome to Employee Payroll system.");
         EmployeePayrollDriver employeePayrollDriver = new EmployeePayrollDriver();
+        EmployeeDetailsToDatabase employeeDetailsToDatabase = new EmployeeDetailsToDatabase();
         byte option;
         while(true) {
-            System.out.println("\n Enter 1 to add details \n Enter 2 to display details \n Enter 3 to get the number of employees \n Enter 4 to EXIT");
+            System.out.println("\n Enter 1 to add details \n Enter 2 to display details \n Enter 3 to get the number of employees \n Enter 4 to get " +
+                    "employee details how have joined in particular time \n Enter 5 to exit");
             option = sc.nextByte();
             switch (option) {
                 case 1: employeePayrollDriver.addEmployeeDetails();
@@ -115,14 +117,20 @@ public class EmployeePayrollDriver {
                 case 2 :
                     System.out.println("Enter the employee's id to get the details");
                     int id = sc.nextInt();
-                    EmployeeDetailsToDatabase employeeDetailsToDatabase = new EmployeeDetailsToDatabase();
                     employeeDetailsToDatabase.getEmployeeDetails(id);
                 break;
                 case 3:
                     //Counting the number of entries.
                     System.out.println("Number of employees are "+EmployeePayrollDriver.countEntries());
                     break;
-                case 4 :
+                case 4:
+                    System.out.println("Enter start date");
+                    String start_date = sc.next();
+                    System.out.println("Enter end date");
+                    String end_date = sc.next();
+                    employeeDetailsToDatabase.getEmployeeDetailsInRange(start_date,end_date);
+                    break;
+                case 5 :
                     System.out.println("Thank You!");
                     return;
             }

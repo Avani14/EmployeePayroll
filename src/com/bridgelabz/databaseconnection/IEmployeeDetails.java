@@ -10,4 +10,5 @@ public interface IEmployeeDetails {
     void addEmployeePayDetails(EmployeePayDetails employeePayDetails);
     void addEmployeeDepartmentDetails(Employee_Department_Details employee_department_details);
     boolean updateBasePay();
+    void getEmployeeDetailsInRange(String start_date,String end_date);
 }
