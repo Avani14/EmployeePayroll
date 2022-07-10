@@ -11,6 +11,7 @@ public class EmployeeDetailsToDatabase implements IEmployeeDetails{
     DBConection dbConection = new DBConection();
     Connection connection = dbConection.getConnection();
     ResultSet resultSet;
+    //Ability to retrieve data
     @Override
     public void getEmployeeDetails(int id) {
         try {
@@ -61,6 +62,7 @@ public class EmployeeDetailsToDatabase implements IEmployeeDetails{
 
         }
     }
+    //Added the employee personal details.
     @Override
     public void addEmployeePersonalDetails(Employee employee) {
         String addQuery = "insert into employee_details(name,emp_gender,emp_phone,emp_address) values(?,?,?,?);";
@@ -76,7 +78,7 @@ public class EmployeeDetailsToDatabase implements IEmployeeDetails{
         }
         System.out.println("Employee details added Successfully!");
     }
-
+    //Added the employee pay details.
     @Override
     public void addEmployeePayDetails(EmployeePayDetails employeePayDetails) {
         String addQuery = "insert into employee_pay(Basic_Pay,Deductions,Taxable_Pay,Income_Tax,Net_Pay) values(?,?,?,?,?)";
@@ -93,7 +95,7 @@ public class EmployeeDetailsToDatabase implements IEmployeeDetails{
         }
         System.out.println("Employee's pay details added Successfully!");
     }
-
+    //Added the employee department details.
     @Override
     public void addEmployeeDepartmentDetails(Employee_Department_Details employee_department_details) {
         try {
