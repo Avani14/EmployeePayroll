@@ -1,5 +1,6 @@
 package com.bridgelabz.employeepayrolltest;
 
+import com.bridgelabz.databaseconnection.EmployeeDetailsToDatabase;
 import jdk.jfr.StackTrace;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -59,6 +60,12 @@ public class EmployeePayrollTest {
         {
             System.out.println(e.getMessage());
         }
+    }
+    @Test
+    public void checkUpdateOfSalary(){
+        EmployeeDetailsToDatabase employeeDetailsToDatabase = new EmployeeDetailsToDatabase();
+        boolean expected = employeeDetailsToDatabase.updateEmployeeDetails();
+        Assertions.assertEquals(expected,true);
     }
 
 
