@@ -64,7 +64,7 @@ public class EmployeePayrollTest {
     @Test
     public void checkUpdateOfSalary(){
         EmployeeDetailsToDatabase employeeDetailsToDatabase = new EmployeeDetailsToDatabase();
-        boolean expected = employeeDetailsToDatabase.updateEmployeeDetails();
+        boolean expected = employeeDetailsToDatabase.updateBasePay();
         Assertions.assertEquals(expected,true);
     }
 
