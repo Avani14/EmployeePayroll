@@ -128,4 +128,34 @@ public class EmployeeDetailsToDatabase implements IEmployeeDetails{
         return true;
     }
 
+    @Override
+    public void getEmployeeDetailsInRange(String start_date, String end_date) {
+
+        try {
+            statement = connection.createStatement();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        String retrieveEmpQuery = "Select * from employee_details emp_details inner join employee_department_details edd where emp_details.emp_id = edd.emp_id and edd.emp_start_date between cast('"+start_date+"' as date) and cast('"+end_date+"' as date);";
+      try {
+            resultSet = statement.executeQuery(retrieveEmpQuery);
+            System.out.println("Size of resultSet is : " + resultSet.getFetchSize());
+            while (resultSet.next()) {
+                System.out.println("----------------------");
+                System.out.println("Employee ID: " + resultSet.getInt("emp_id"));
+//                System.out.println("Employee Name: " + resultSet.getString("name"));
+//                System.out.println("Employee Gender: " + resultSet.getString("emp_gender"));
+//                System.out.println("Employee Phone: " + resultSet.getLong("emp_phone"));
+//                System.out.println("Employee Address: " + resultSet.getString("emp_address"));
+//                System.out.println("Employee ID: " + resultSet.getInt("emp_id"));
+                System.out.println("Employee Salary: "+resultSet.getInt("emp_salar"));
+                System.out.println("Employee Department: "+resultSet.getString("emp_department"));
+                System.out.println("Employee Start date: "+resultSet.getDate("emp_start_date"));
+            }
+        }
+        catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }
