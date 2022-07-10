@@ -117,8 +117,8 @@ public class EmployeeDetailsToDatabase implements IEmployeeDetails{
     }
 
     @Override
-    public boolean updateEmployeeDetails() {
-        String updateQuery = "update employee_department_details set emp_salar = 11 where emp_id in (Select emp_id from employee_details where name ='Terisa');";
+    public boolean updateBasePay() {
+        String updateQuery = "update employee_pay set Basic_Pay = 3000000 where emp_id in (Select emp_id from employee_details where name ='Terisa');";
         try {
             statement = connection.createStatement();
             statement.execute(updateQuery);
