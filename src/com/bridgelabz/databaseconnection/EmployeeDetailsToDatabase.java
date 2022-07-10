@@ -143,11 +143,11 @@ public class EmployeeDetailsToDatabase implements IEmployeeDetails{
             while (resultSet.next()) {
                 System.out.println("----------------------");
                 System.out.println("Employee ID: " + resultSet.getInt("emp_id"));
-//                System.out.println("Employee Name: " + resultSet.getString("name"));
-//                System.out.println("Employee Gender: " + resultSet.getString("emp_gender"));
-//                System.out.println("Employee Phone: " + resultSet.getLong("emp_phone"));
-//                System.out.println("Employee Address: " + resultSet.getString("emp_address"));
-//                System.out.println("Employee ID: " + resultSet.getInt("emp_id"));
+                System.out.println("Employee Name: " + resultSet.getString("name"));
+                System.out.println("Employee Gender: " + resultSet.getString("emp_gender"));
+                System.out.println("Employee Phone: " + resultSet.getLong("emp_phone"));
+                System.out.println("Employee Address: " + resultSet.getString("emp_address"));
+                System.out.println("Employee ID: " + resultSet.getInt("emp_id"));
                 System.out.println("Employee Salary: "+resultSet.getInt("emp_salar"));
                 System.out.println("Employee Department: "+resultSet.getString("emp_department"));
                 System.out.println("Employee Start date: "+resultSet.getDate("emp_start_date"));
