@@ -9,4 +9,5 @@ public interface IEmployeeDetails {
     void addEmployeePersonalDetails(Employee employee);
     void addEmployeePayDetails(EmployeePayDetails employeePayDetails);
     void addEmployeeDepartmentDetails(Employee_Department_Details employee_department_details);
+    boolean updateEmployeeDetails();
 }

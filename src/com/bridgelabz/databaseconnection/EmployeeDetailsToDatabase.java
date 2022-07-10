@@ -115,4 +115,17 @@ public class EmployeeDetailsToDatabase implements IEmployeeDetails{
         }
         System.out.println("Employee details added Successfully!");
     }
+
+    @Override
+    public boolean updateEmployeeDetails() {
+        String updateQuery = "update employee_department_details set emp_salar = 11 where emp_id in (Select emp_id from employee_details where name ='Terisa');";
+        try {
+            statement = connection.createStatement();
+            statement.execute(updateQuery);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return true;
+    }
+
 }
