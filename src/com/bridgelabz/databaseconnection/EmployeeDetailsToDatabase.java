@@ -143,17 +143,36 @@ public class EmployeeDetailsToDatabase implements IEmployeeDetails{
             while (resultSet.next()) {
                 System.out.println("----------------------");
                 System.out.println("Employee ID: " + resultSet.getInt("emp_id"));
-//                System.out.println("Employee Name: " + resultSet.getString("name"));
-//                System.out.println("Employee Gender: " + resultSet.getString("emp_gender"));
-//                System.out.println("Employee Phone: " + resultSet.getLong("emp_phone"));
-//                System.out.println("Employee Address: " + resultSet.getString("emp_address"));
-//                System.out.println("Employee ID: " + resultSet.getInt("emp_id"));
+                System.out.println("Employee Name: " + resultSet.getString("name"));
+                System.out.println("Employee Gender: " + resultSet.getString("emp_gender"));
+                System.out.println("Employee Phone: " + resultSet.getLong("emp_phone"));
+                System.out.println("Employee Address: " + resultSet.getString("emp_address"));
+                System.out.println("Employee ID: " + resultSet.getInt("emp_id"));
                 System.out.println("Employee Salary: "+resultSet.getInt("emp_salar"));
                 System.out.println("Employee Department: "+resultSet.getString("emp_department"));
                 System.out.println("Employee Start date: "+resultSet.getDate("emp_start_date"));
             }
         }
         catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public boolean getMinMaxSumAvg(String gender) {
+        String sumQueryFemale = "SELECT SUM(emp_salar) from employee_department_details where emp_id in(Select emp_id from employee_details where  emp_gender = '"+gender+"' group by emp_gender);";
+        String avgQueryFemale = "SELECT AVG(emp_salar) from employee_department_details where emp_id in(Select emp_id from employee_details where  emp_gender = '"+gender+"' group by emp_gender);";
+        String minQueryFemale = "SELECT MIN(emp_salar) from employee_department_details where emp_id in(Select emp_id from employee_details where  emp_gender = '"+gender+"' group by emp_gender);";
+        String maxQueryFemale = "SELECT MAX(emp_salar) from employee_department_details where emp_id in(Select emp_id from employee_details where  emp_gender = '"+gender+"' group by emp_gender);";
+        String countQueryFemale = "SELECT COUNT(emp_salar) from employee_department_details where emp_id in(Select emp_id from employee_details where  emp_gender = '"+gender+"' group by emp_gender);";
+        try {
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(sumQueryFemale);
+            while(resultSet.next()) {
+                System.out.println("Sum is: " + resultSet.getInt("SUM(emp_salar)"));
+            }
+            return true;
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }

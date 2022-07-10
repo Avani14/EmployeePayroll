@@ -67,6 +67,11 @@ public class EmployeePayrollTest {
         boolean expected = employeeDetailsToDatabase.updateBasePay();
         Assertions.assertEquals(expected,true);
     }
-
+    @Test
+    public void checkSumOfSalary(){
+        EmployeeDetailsToDatabase employeeDetailsToDatabase = new EmployeeDetailsToDatabase();
+        boolean expected = employeeDetailsToDatabase.getMinMaxSumAvg("F");
+        Assertions.assertEquals(expected,true);
+    }
 
 }

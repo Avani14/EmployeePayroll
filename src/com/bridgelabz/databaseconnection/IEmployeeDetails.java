@@ -11,4 +11,5 @@ public interface IEmployeeDetails {
     void addEmployeeDepartmentDetails(Employee_Department_Details employee_department_details);
     boolean updateBasePay();
     void getEmployeeDetailsInRange(String start_date,String end_date);
+    boolean getMinMaxSumAvg(String gender);
 }
